@@ -1,4 +1,4 @@
-import { PlaneGeometry, Mesh, MeshBasicMaterial } from 'three';
+import { PlaneGeometry, Mesh } from 'three';
 const { renderer, scene, camera } = require('./setup.js');
 const { material, webcamTexture } = require('./material.js');
 

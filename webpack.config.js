@@ -9,7 +9,7 @@ module.exports = {
             { test: /\.css$/, loader: "style!css" },
             { test: /\.scss$/, loaders: ["style", "css", "sass"] },
             { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"},
-            { test: /\.jsx?$/, exclude: /node_modules/, loader: "babel-loader", query: { presets: ['react', 'es2015'] }}
+            { test: /\.glsl$/, loader: 'webpack-glsl' }
         ]
     },
     plugins: [],
