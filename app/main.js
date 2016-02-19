@@ -6,11 +6,9 @@ var geometry = new PlaneGeometry( 1, 1, 1 );
 var mesh = new Mesh( geometry, material );
 
 scene.add( mesh );
-
 camera.position.z = 1;
-var diff = 0;
+
 function render(delta, now) {
-  diff = delta - diff;
   webcamTexture.update(delta, now);
 
   if(delta) material.uniforms.time.value = delta % 3000;
