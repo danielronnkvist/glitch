@@ -1,3 +1,6 @@
 glitch
 =====
 
+`npm install`
+
+`gulp`

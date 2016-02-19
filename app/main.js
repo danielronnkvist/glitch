@@ -8,9 +8,12 @@ var mesh = new Mesh( geometry, material );
 scene.add( mesh );
 
 camera.position.z = 1;
-
+var diff = 0;
 function render(delta, now) {
-  webcamTexture.update(delta, now)
+  diff = delta - diff;
+  webcamTexture.update(delta, now);
+
+  if(delta) material.uniforms.time.value = delta % 3000;
 
   requestAnimationFrame( render );
   renderer.render( scene, camera );
