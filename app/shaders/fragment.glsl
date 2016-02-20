@@ -2,6 +2,7 @@ uniform float time;
 uniform float speed;
 uniform float distortion;
 uniform float distortion2;
+uniform float rollSpeed;
 uniform sampler2D texture;
 varying vec2 vUv;
 
@@ -18,5 +19,5 @@ void main() {
   float green = cos(time * 10.0 / 4.0);
   float blue = tan(time * 10.0 / 4.0);
 
-  gl_FragColor = vec4(red, green, blue, 1.0) * texture2D(texture, vec2(fract(p.x + offset), fract(p.y - time*1.0)));;
+  gl_FragColor = vec4(red, green, blue, 1.0) * texture2D(texture, vec2(fract(p.x + offset), fract(p.y - time*rollSpeed)));;
 }

@@ -10,7 +10,8 @@ var shader = {
     texture: { type: "t" },
     speed: { type: "f", value: 10.2 },
     distortion: { type: "f", value: 3.0 },
-    distortion2: { type: "f", value: 10.0 }
+    distortion2: { type: "f", value: 10.0 },
+    rollSpeed: { type: "f", value: 0.2 }
   },
   vertexShader: vertexShader,
   fragmentShader: noise + fragmentShader
