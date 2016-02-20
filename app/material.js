@@ -1,11 +1,11 @@
 import { MeshBasicMaterial, ShaderMaterial, LinearFilter } from 'three';
 const WebcamTexture = require('./webcamtexture.js');
-const testShader = require('./testShader.js');
+const shader = require('./shader.js');
 
 var webcamTexture = new WebcamTexture()
 webcamTexture.texture.minFilter = LinearFilter
-testShader.uniforms.texture.value = webcamTexture.texture;
-var material = new ShaderMaterial(testShader);
+shader.uniforms.texture.value = webcamTexture.texture;
+var material = new ShaderMaterial(shader);
 
 material.update = (delta)=>{
   webcamTexture.update(delta);

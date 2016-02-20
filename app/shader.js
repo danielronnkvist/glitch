@@ -2,7 +2,7 @@ import { Vector2 } from 'three';
 var vertexShader = require('./shaders/vertex.glsl');
 var fragmentShader = require('./shaders/fragment.glsl');
 
-var TestShader = {
+var shader = {
 
   uniforms: {
     time: { type: "f", value: 0 },
@@ -17,4 +17,4 @@ var TestShader = {
 
 };
 
-module.exports = TestShader;
+module.exports = shader;
