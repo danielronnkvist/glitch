@@ -21,7 +21,7 @@ float snoise(vec2 v){
   vec2 i1;
   i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
   vec4 x12 = x0.xyxy + C.xxzz;
- x12.xy -= i1;
+  x12.xy -= i1;
 
   i = mod289(i); // Avoid truncation effects in permutation
   vec3 p = permute( permute( i.y + vec3(0.0, i1.y, 1.0 ))
