@@ -10,8 +10,8 @@ scene.add( mesh );
 camera.position.z = 50;
 
 function render(delta, now) {
-  var freq = audioManager.analysis();
-  material.update(delta, freq);
+  var sound = audioManager.analysis();
+  material.update(delta, sound);
   cameraControl.update();
   requestAnimationFrame( render );
   renderer.render( scene, camera );

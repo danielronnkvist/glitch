@@ -25,14 +25,16 @@ userMedia.then(handleStream);
 function analysis() {
   if(!analyser) return 0;
   var bufferLength = analyser.frequencyBinCount;
-  var buffer = new Float32Array(bufferLength);
-  analyser.getFloatFrequencyData(buffer);
+  var floatBuffer = new Float32Array(bufferLength);
+  analyser.getFloatFrequencyData(floatBuffer);
+  var byteBuffer = new Uint8Array(bufferLength);
+  analyser.getByteFrequencyData(byteBuffer);
 
   //find the frequency with largest peak
   var max_index = 0;
   for(var i = 1; i < bufferLength; i++)
   {
-    if((buffer[i]) > buffer[max_index])
+    if(floatBuffer[i] > floatBuffer[max_index])
       max_index = i;
   }
 
@@ -41,7 +43,7 @@ function analysis() {
   var peaks = [];
   for(var i = 0; i < bufferLength; i++)
   {
-    if(buffer[i] > (buffer[max_index]-threshold) && buffer[i] > -30)
+    if(floatBuffer[i] > (floatBuffer[max_index]-threshold) && floatBuffer[i] > -30)
       peaks.push(i);
   }
 
@@ -49,7 +51,13 @@ function analysis() {
   var sum = peaks.reduce((a, b)=> a + b, 0);
   var freq = sum / peaks.length;
 
-  return freq;
+  let ampSum = byteBuffer.reduce((a, b) => a + b, 0);
+  let amp =  ampSum / byteBuffer.length;
+
+  return {
+    freq: freq,
+    amp: amp,
+  };
 }
 
 module.exports = {
