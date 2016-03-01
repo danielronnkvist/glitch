@@ -10,7 +10,7 @@ var WebcamTexture = function(){
   video.autoplay  = true;
   video.loop  = true;
   // expose video as this.video
-  this.video  = video
+  this.video  = video;
 
   userMedia.then(function(stream){
     video.src = URL.createObjectURL(stream);
@@ -19,7 +19,7 @@ var WebcamTexture = function(){
   // create the texture
   var texture = new Texture( video );
   // expose texture as this.texture
-  this.texture  = texture
+  this.texture = texture;
 
   /**
    * update the object
@@ -33,11 +33,11 @@ var WebcamTexture = function(){
    * destroy the object
    */
   this.destroy  = function(){
-    video.pause()
+    video.pause();
   }
 }
 
 
 WebcamTexture.available  = navigator.webkitGetUserMedia || navigator.mozGetUserMedia ? true : false;
 
-module.exports = WebcamTexture
+module.exports = WebcamTexture;

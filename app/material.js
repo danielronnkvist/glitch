@@ -2,8 +2,8 @@ import { MeshBasicMaterial, ShaderMaterial, LinearFilter } from 'three';
 const WebcamTexture = require('./webcamtexture.js');
 const shader = require('./shader.js');
 
-var webcamTexture = new WebcamTexture()
-webcamTexture.texture.minFilter = LinearFilter
+var webcamTexture = new WebcamTexture();
+webcamTexture.texture.minFilter = LinearFilter;
 shader.uniforms.texture.value = webcamTexture.texture;
 var material = new ShaderMaterial(shader);
 
@@ -15,4 +15,4 @@ material.update = (delta, sound) => {
   if(sound && sound.amp) material.uniforms.amp.value = sound.amp;
 }
 
-module.exports = material
+module.exports = material;

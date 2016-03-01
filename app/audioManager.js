@@ -56,8 +56,8 @@ function analysis() {
   let amp =  ampSum / byteBuffer.length;
 
   return {
-    freq: freq,
-    amp: amp,
+    freq,
+    amp,
   };
 }
 
