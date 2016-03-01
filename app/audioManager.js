@@ -8,7 +8,7 @@ function handleStream(stream) {
 
   // Create analyser
   var filter = audioContext.createBiquadFilter();
-  filter.type = filter.bandpass;
+  filter.type = 'bandpass';
   filter.frequency.value = 3937.5;
   filter.Q.value = 0.5;
 
