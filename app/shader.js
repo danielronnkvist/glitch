@@ -14,7 +14,7 @@ var shader = {
     freq: { type: "f", value: 0 }
   },
   vertexShader: pnoise + vertexShader,
-  fragmentShader: fragmentShader
+  fragmentShader: noise + fragmentShader
 
 };
 
