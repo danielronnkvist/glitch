@@ -14,7 +14,7 @@ function handleStream(stream) {
 
   analyser = audioContext.createAnalyser();
   analyser.fftSize = 2048;
-  analyser.smoothingTimeConstant = 0.5;
+  analyser.smoothingTimeConstant = 0;
 
   mediaStream.connect(filter);
   filter.connect(analyser);
@@ -32,23 +32,21 @@ function analysis() {
   var max_index = 0;
   for(var i = 1; i < bufferLength; i++)
   {
-    if((buffer[i]) > (buffer[max_index]))
+    if((buffer[i]) > buffer[max_index])
       max_index = i;
   }
 
   //take the mean value of all the frequencies over the threshold
-  var threshold = 5;
+  var threshold = 15;
   var peaks = [];
   for(var i = 0; i < bufferLength; i++)
   {
-    if(buffer[i] > (buffer[max_index]-threshold))
+    if(buffer[i] > (buffer[max_index]-threshold) && buffer[i] > -30)
       peaks.push(i);
   }
 
-  //take the sum and devide by mean
-  var sum = peaks.reduce(function(previous, current){
-    return previous+current;
-  }, 0);
+  //take the sum and divide by mean
+  var sum = peaks.reduce((a, b)=> a + b, 0);
   var freq = sum / peaks.length;
 
   return freq;
