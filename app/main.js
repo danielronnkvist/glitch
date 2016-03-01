@@ -1,5 +1,5 @@
 import { IcosahedronGeometry, Mesh } from 'three';
-const { renderer, scene, camera } = require('./setup.js');
+const { renderer, scene, camera, cameraControl } = require('./setup.js');
 const material = require('./material.js');
 const audioManager = require('./audioManager.js');
 
@@ -12,6 +12,7 @@ camera.position.z = 50;
 function render(delta, now) {
   var freq = audioManager.analysis();
   material.update(delta, freq);
+  cameraControl.update();
   requestAnimationFrame( render );
   renderer.render( scene, camera );
 }
