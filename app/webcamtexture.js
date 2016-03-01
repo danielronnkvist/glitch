@@ -1,4 +1,5 @@
 import { Texture } from 'three';
+const userMedia = require('./userMedia.js');
 
 var WebcamTexture = function(){
   console.assert(WebcamTexture.available === true)
@@ -11,20 +12,9 @@ var WebcamTexture = function(){
   // expose video as this.video
   this.video  = video
 
-  if( navigator.webkitGetUserMedia ){
-    navigator.webkitGetUserMedia({video:true}, function(stream){
-      video.src = URL.createObjectURL(stream);
-    }, function(error){
-      alert('you got no WebRTC webcam');
-    });
-  }else if(navigator.mozGetUserMedia){
-    navigator.mozGetUserMedia({video:true}, function(stream){
-      video.src = URL.createObjectURL(stream);
-    }, function(error){
-      alert('you got no WebRTC webcam');
-    });
-  }else console.assert(false)
-
+  userMedia.then(function(stream){
+    video.src = URL.createObjectURL(stream);
+  });
 
   // create the texture
   var texture = new Texture( video );

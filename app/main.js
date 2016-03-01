@@ -9,7 +9,6 @@ scene.add( mesh );
 camera.position.z = 50;
 
 function render(delta, now) {
-  //geometry.rotateY(0.01);
   material.update(delta);
   cameraControl.update();
   requestAnimationFrame( render );
