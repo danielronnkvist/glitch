@@ -23,6 +23,7 @@ function handleStream(stream) {
 userMedia.then(handleStream);
 
 function analysis() {
+  if(!analyser) return 0;
   var bufferLength = analyser.frequencyBinCount;
   var buffer = new Float32Array(bufferLength);
   analyser.getFloatFrequencyData(buffer);
@@ -45,18 +46,12 @@ function analysis() {
   }
 
   //take the sum and devide by mean
-  var sum = 0;
-  for(var i = 0; i < peaks.length; i++)
-  {
-    sum += peaks[i];
-  }
+  var sum = peaks.reduce(function(previous, current){
+    return previous+current;
+  }, 0);
   var freq = sum / peaks.length;
 
-  //samples from 0-20000 Hz, multiply by 19.5 to get the right frequency
-  var result = (freq*19.5)*2;
-  console.log(result);
-
-  return result;
+  return freq;
 }
 
 module.exports = {
