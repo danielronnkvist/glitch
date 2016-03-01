@@ -1,5 +1,6 @@
 const userMedia = require('./userMedia.js');
 
+let audioContext = new AudioContext();
 let analyser;
 
 function handleStream(stream) {
