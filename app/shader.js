@@ -11,7 +11,8 @@ var shader = {
   uniforms: {
     time: { type: "f", value: 0 },
     texture: { type: "t" },
-    freq: { type: "f", value: 0 }
+    freq: { type: "f", value: 0 },
+    amp: { type: "f", value: 0 },
   },
   vertexShader: pnoise + vertexShader,
   fragmentShader: noise + fragmentShader

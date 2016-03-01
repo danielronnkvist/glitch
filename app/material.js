@@ -7,11 +7,12 @@ webcamTexture.texture.minFilter = LinearFilter
 shader.uniforms.texture.value = webcamTexture.texture;
 var material = new ShaderMaterial(shader);
 
-material.update = (delta, freq)=>{
+material.update = (delta, sound) => {
   webcamTexture.update(delta);
 
   if(delta) material.uniforms.time.value = delta % 3000;
-  if(freq) material.uniforms.freq.value = freq;
+  if(sound && sound.freq) material.uniforms.freq.value = sound.freq;
+  if(sound && sound.amp) material.uniforms.amp.value = sound.amp;
 }
 
 module.exports = material
