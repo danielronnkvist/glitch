@@ -40,10 +40,11 @@ function analysis() {
 
   //take the mean value of all the frequencies over the threshold
   var threshold = 15;
+  var minimumThreshold = -50;
   var peaks = [];
   for(var i = 0; i < bufferLength; i++)
   {
-    if(floatBuffer[i] > (floatBuffer[max_index]-threshold) && floatBuffer[i] > -30)
+    if(floatBuffer[i] > (floatBuffer[max_index]-threshold) && floatBuffer[i] > minimumThreshold)
       peaks.push(i);
   }
 
